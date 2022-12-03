@@ -2,6 +2,7 @@ package task
 
 import (
 	"context"
+	"log"
 
 	"github.com/flyteorg/flyteplugins/go/tasks/pluginmachinery/ioutils"
 
@@ -83,6 +84,7 @@ func (t *Handler) ValidateOutputAndCacheAdd(ctx context.Context, nodeID v1alpha1
 
 	iface := tk.Interface
 	outputsDeclared := iface != nil && iface.Outputs != nil && len(iface.Outputs.Variables) > 0
+	log.Printf("XXX variables %+v, r %+v", iface.Outputs.Variables, r)
 
 	if r == nil {
 		if outputsDeclared {
